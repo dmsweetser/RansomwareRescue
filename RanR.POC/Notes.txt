@@ -1,0 +1,91 @@
+﻿----------2018-06-24----------
+Solve for the known plaintext with the inverse of the original solution, and use that as the test:
+
+Original solution:
+(p * _x * t) / c = pu
+
+Inverse solution:
+
+pu * c / (t * _x) = p
+
+When I do this, my numbers are way out of whack but they do solve for the original plaintext.
+I found a bug that was resetting my Target Ciphertext. Operation in process now.
+
+
+
+----------2018-06-21----------
+Only focus on one plain/cipher pair and one encrypted unknown file.
+Cipher reduces to a series of numerical transformations with a net gain in the file size.
++ and - with net gain means it is a net operation of +.
+However, a + operation is not successful in identifying unknown plaintext.
+
+
+Formula to start with:
+
+p = plaintext (known)
+c = ciphertext (known)
+pu = plaintext (unknown)
+t = ciphertext (target)
+_x = unknown constant
+
+p / c * _x / 1 = pu / t
+Constraint: 1 < _x < t
+
+(p * _x) / c = pu / t
+(p * _x * t) / c = pu
+Solve for _x where 1 < _x < t (binary search)
+
+To verify, solve for _t (unknown target) with identified _x;
+
+(p * _x * _t) / c = pu
+p * _x * _t = pu * c
+_t = (pu * c) / (p * _x)
+
+If _t = t, then the solution is valid for this file. ? Worth a shot
+
+----------2018-06-15----------
+
+Addition and subtraction alone are insufficient- they are fixed in relation to the two points, so they won't translate.
+However, together with other factors they may be sufficient- I'm not sure.
+
+----------2018-06-07----------
+
+Use successive approximation in a network of nodes comparing results as they go to get to the formula.
+
+Problems- what is defined as close?
+How to check closeness
+How to track node results
+What am I trying to find? Key, transformation?
+Compare closeness of hash;
+Progressive solution- modify working solution to match other solution
+Swirl effect as they keep moving towards each other
+True solution is when hashes match still, but they take each other into account when solving
+
+Track one hash per client and update as they go
+Get average of all clients and approximate towards that
+Weigh average hash when calculating solution
+Working towards two ends simultaneously
+
+Extract CombinedInitVector and Pad at end of execution.
+
+----------2018-06-05----------
+
+-AES256-
+	-Initialization vector- 128bit, 2^(128-1) (x)
+	-Plaintext- varying length
+	-Padding- max 128bit, 2^(128-1) (y)
+	-fn(x + plaintext + y) = ciphertext
+
+http://www.jamesbrennan.org/algebra/systems/addition_method.htm
+-One problem is that we have two unknowns;
+	-The initialization vector and the padding;
+	-Also, they change from file to file, so I can't really solve by having two pairs of files;
+-How do I know if I am done?
+	-I can't provide 2^(256-2) variations of the same file;
+-What am I trying to identify?
+	-The key;
+-But I am trying to do it without reverse-engineering the algorithm;
+-Father, what do I need to see?
+
+-I won't know the decrypted value when executing;
+	-But I will when generating a solution;

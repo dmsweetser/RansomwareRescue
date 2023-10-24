@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Samples\7ZIP\1.txt" />
+    <None Remove="Samples\7ZIP\1.txt.7z" />
+    <None Remove="Samples\7ZIP\2.txt" />
+    <None Remove="Samples\7ZIP\2.txt.7z" />
+    <None Remove="Samples\7ZIP\3.txt" />
+    <None Remove="Samples\7ZIP\3.txt.7z" />
+    <None Remove="Samples\7ZIP\Complex1.txt" />
+    <None Remove="Samples\7ZIP\Complex1.txt.7z" />
+    <None Remove="Samples\7ZIP\Complex2.txt" />
+    <None Remove="Samples\7ZIP\Complex2.txt.7z" />
+    <None Remove="Samples\7ZIP\Complex3.txt" />
+    <None Remove="Samples\7ZIP\Complex3.txt.7z" />
+    <None Remove="Samples\7ZIP\Simple1.txt" />
+    <None Remove="Samples\7ZIP\Simple1.txt.7z" />
+    <None Remove="Samples\7ZIP\Simple2.txt" />
+    <None Remove="Samples\7ZIP\Simple2.txt.7z" />
+    <None Remove="Samples\7ZIP\Simple3.txt" />
+    <None Remove="Samples\7ZIP\Simple3.txt.7z" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Samples\7ZIP\Complex1.txt" />
+    <EmbeddedResource Include="Samples\7ZIP\Complex1.txt.7z" />
+    <EmbeddedResource Include="Samples\7ZIP\Complex2.txt" />
+    <EmbeddedResource Include="Samples\7ZIP\Complex2.txt.7z" />
+    <EmbeddedResource Include="Samples\7ZIP\Complex3.txt" />
+    <EmbeddedResource Include="Samples\7ZIP\Complex3.txt.7z" />
+    <EmbeddedResource Include="Samples\7ZIP\Simple1.txt" />
+    <EmbeddedResource Include="Samples\7ZIP\Simple1.txt.7z" />
+    <EmbeddedResource Include="Samples\7ZIP\Simple2.txt" />
+    <EmbeddedResource Include="Samples\7ZIP\Simple2.txt.7z" />
+    <EmbeddedResource Include="Samples\7ZIP\Simple3.txt" />
+    <EmbeddedResource Include="Samples\7ZIP\Simple3.txt.7z" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RanR.POC\RanR.POC.csproj" />
+  </ItemGroup>
+
+</Project>
